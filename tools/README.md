@@ -6,15 +6,21 @@ These tools exist to **reallocate** time, not add it. Every hour in the sprint i
 
 ## sprint-optimizer.py
 
-Analyzes `sat/weak-area-tracker.md` for RED topics and suggests tomorrow's warm-up.
+Analyzes **both** trackers and suggests tomorrow's warm-up:
+
+- `sat/weak-area-tracker.md` — R/Y/G counts per section (Math / Reading / Writing) + top RED topics
+- `ielts/progress-tracker.md` — milestone progress + latest logged mock scores
+- Sprint day auto-computed from today's date, mapped to the L1–L4 difficulty ladder
 
 ```bash
 python tools/sprint-optimizer.py --student AZRA
 python tools/sprint-optimizer.py --student ELA
 python tools/sprint-optimizer.py --student ELFIIN
+python tools/sprint-optimizer.py --student ELA --day 25   # override sprint day
 ```
 
-Output: up to 5 focus topics + rule "shift 30 min from GREEN to RED".
+Output: per-section R/Y/G tally, next open milestones, a 3-topic warm-up rotation
+across sections at the current ladder level, plus the rule "shift 30 min from GREEN to RED".
 
 Run it:
 - Daily after error-loop (2 min)
